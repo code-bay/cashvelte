@@ -1,7 +1,7 @@
 <script>
-  import FloatingActionButton from '../components/buttons/FloatingActionButton.svelte'
-	import IconButton from '../components/buttons/IconButton.svelte';
-  import SimpleButton from "../components/buttons/SimpleButton.svelte"
+  import FloatingActionButton from '$components/buttons/FloatingActionButton.svelte'
+	import IconButton from '$components/buttons/IconButton.svelte';
+  import SimpleButton from "$components/buttons/SimpleButton.svelte"
 </script>
 
 <h1>Welcome to SvelteKit</h1>
