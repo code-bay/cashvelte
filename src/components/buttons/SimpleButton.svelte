@@ -9,14 +9,14 @@ export let url
 </script>
 
 {#if url}
-	<a href={url} class={`simple-button ${theme} target ripple`}>
+	<a href={url} class={`simple-button ${theme}`}>
 		{#if icon}
 			<Icon icon={icon} width="24" height="24"/>
 		{/if}
 		{label}
 	</a>
 {:else}
-	<button class={`simple-button ${theme} target ripple`} type={type} on:click={action}>
+	<button class={`simple-button ${theme}`} type={type} on:click={action}>
 		{#if icon}
 			<Icon icon={icon} width="24" height="24"/>
 		{/if}
@@ -40,21 +40,21 @@ export let url
 	color var(--on-primary)
 	padding 0 24px
 
-:global(.iconify)
-	margin 0 8px 0 -8px
+	:global(.iconify)
+		margin 0 8px 0 -8px
 
 .tonal
 	background var(--secondary)
 	color var(--on-secondary)
 	padding 0 24px
 
-:global(.iconify)
-	margin 0 8px 0 -8px
+	:global(.iconify)
+		margin 0 8px 0 -8px
 
 .standard
 	color var(--primary)
 	padding 0 12px
 
-:global(.iconify)
-	margin-right 8px
+	:global(.iconify)
+		margin-right 8px
 </style>
