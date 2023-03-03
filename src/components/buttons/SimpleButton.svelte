@@ -25,8 +25,6 @@ export let url
 {/if}
 
 <style lang="stylus">
-@import '../../styles/'
-
 .simple-button
 	align-items center
 	border-radius 20px
