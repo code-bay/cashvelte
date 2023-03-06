@@ -1,9 +1,9 @@
 <script>
   import FloatingActionButton from '$components/buttons/FloatingActionButton.svelte'
-	import IconButton from '$components/buttons/IconButton.svelte';
+	import IconButton from '$components/buttons/IconButton.svelte'
   import SimpleButton from "$components/buttons/SimpleButton.svelte"
-	import Card from '../components/Card.svelte';
-	import TextInput from '../components/TextInput.svelte';
+	import Card from '$components/Card.svelte'
+	import TextInput from '$components/TextInput.svelte'
 </script>
 
 <h1>Welcome to SvelteKit</h1>
