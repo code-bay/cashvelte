@@ -121,3 +121,15 @@ export function OFXParse(ofx) {
 // 			return total + prop.value;
 // 		}, 0),
 // 	},
+
+export function convertTimestampToDate(timestamp) {
+	const year = parseInt(timestamp.substr(0, 4))
+	const month = parseInt(timestamp.substr(4, 2)) - 1
+	const day = parseInt(timestamp.substr(6, 2))
+	const hour = parseInt(timestamp.substr(8, 2))
+	const minute = parseInt(timestamp.substr(10, 2))
+	const second = parseInt(timestamp.substr(12, 2))
+	const date = new Date(year, month, day, hour, minute, second)
+
+	return date.toISOString()
+}
