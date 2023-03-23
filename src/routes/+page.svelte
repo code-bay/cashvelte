@@ -4,6 +4,7 @@
   import SimpleButton from "$components/buttons/SimpleButton.svelte"
 	import Card from '$components/Card.svelte'
 	import TextInput from '$components/TextInput.svelte'
+	import Upload from '../components/Upload.svelte';
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -13,3 +14,4 @@
 <IconButton icon="mdi:menu" theme="tonal"/>
 <Card theme="elevated">Test card!</Card>
 <TextInput type="text" label="Name"/>
+<Upload/>
