@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 85" fill="#DEEB77">
+  <mask id="cut">
+    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+    <line stroke="black" x1="80%" y1="53" x2="100%" y2="53" stroke-width="24" stroke-linecap="round" opacity="1" fill="black"/>
+    <circle cx="80%" cy="53" r="8" fill="white"/>
+  </mask>
+  <rect x="0" y="20" width="100%" height="64" opacity=".6" rx="16" stroke-width="16" transform="skewY(-14)"/>
+  <rect x="0" y="21" width="100%" height="64" opacity=".9" mask="url(#cut)" rx="16" stroke-width="12"/>
+</svg>
