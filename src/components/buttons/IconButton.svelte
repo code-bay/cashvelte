@@ -2,24 +2,20 @@
 	import Icon from '@iconify/svelte'
 	export let action
 	export let icon 
-	export let theme
+	export let color
 	export let url
 </script>
 
 {#if url}
 	<a href={url} class="target">
-		<span class={`icon-button ${theme} ripple`}>
-			{#if icon}
-				<Icon icon={icon} width="24" height="24"/>
-			{/if}
+		<span class={`icon-button ${color} ripple`}>
+			<Icon icon={icon} width="24" height="24"/>
 		</span>
 	</a>
 {:else}
 	<button class="target" on:click={action}>
-		<span class={`icon-button ${theme} ripple`}>
-			{#if icon}
-				<Icon icon={icon} width="24" height="24"/>
-			{/if}
+		<span class={`icon-button ${color} ripple`}>
+			<Icon icon={icon} width="24" height="24"/>
 		</span>
 	</button>
 {/if}
@@ -39,9 +35,12 @@
 	width 40px
 
 // 🎨 Themes
+.surface
+	color var(--on-surface)
+
 .filled
-	background var(--primary)
-	color var(--on-primary)
+	background var(--primary-container)
+	color var(--on-primary-container)
 
 .tonal
 	background var(--secondary)
