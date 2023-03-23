@@ -8,6 +8,7 @@
 	import TextInput from '$components/TextInput.svelte'
 	import TopAppBar from '$components/TopAppBar.svelte';
 	import Icon from '@iconify/svelte';
+	import Upload from '$components/Upload.svelte';
 </script>
 
 <TopAppBar title="Cashvelte"/>
@@ -28,6 +29,7 @@
 				type="extended"
 				label="Learn more"
 			/>
+			<Upload/>
 		</div>
 	</section>
 </main>

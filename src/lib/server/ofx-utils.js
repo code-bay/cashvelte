@@ -1,15 +1,5 @@
 import { XMLParser } from 'fast-xml-parser';
 
-export function OFXDate(date) {
-	let year = date.substring(0, 4),
-			month = date.substring(4, 6) - 1,
-			day = date.substring(6, 8),
-			hour = date.substring(8, 10),
-			min = date.substring(10, 12),
-			sec = date.substring(12, 14)
-	return `${year}-${month}-${day} ${hour}:${min}:${sec}`
-}
-
 export function OFXFilter(data) {
 	let transactions = data.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN.map((prop) => {
 		return {
@@ -129,7 +119,21 @@ export function convertTimestampToDate(timestamp) {
 	const hour = parseInt(timestamp.substr(8, 2))
 	const minute = parseInt(timestamp.substr(10, 2))
 	const second = parseInt(timestamp.substr(12, 2))
+	const offset = timestamp.substr(14)
+
 	const date = new Date(year, month, day, hour, minute, second)
 
-	return date.toISOString()
+	if (offset) {
+		const offset_number = parseInt(offset.match(/\d+/g))
+		const offset_signal = offset.substr(1, 1)
+		const hours = date.getHours()
+
+		if (offset_signal == "-") {
+			date.setHours(hours - offset_number)
+		} else {
+			date.setHours(hours + offset_number)
+		}
+	}
+
+	return date
 }
