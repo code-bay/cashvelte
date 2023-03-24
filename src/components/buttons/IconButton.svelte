@@ -1,21 +1,21 @@
 <script>
-	import Icon from '@iconify/svelte'
-	export let action
-	export let icon 
-	export let color
-	export let url
+	import Icon from '@iconify/svelte';
+	export let action;
+	export let icon;
+	export let color;
+	export let url;
 </script>
 
 {#if url}
 	<a href={url} class="target">
 		<span class={`icon-button ${color} ripple`}>
-			<Icon icon={icon} width="24" height="24"/>
+			<Icon {icon} width="24" height="24" />
 		</span>
 	</a>
 {:else}
 	<button class="target" on:click={action}>
 		<span class={`icon-button ${color} ripple`}>
-			<Icon icon={icon} width="24" height="24"/>
+			<Icon {icon} width="24" height="24" />
 		</span>
 	</button>
 {/if}
@@ -48,4 +48,4 @@
 
 .standard
 	color var(--primary)
-</style>  
+</style>

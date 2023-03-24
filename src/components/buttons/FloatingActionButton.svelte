@@ -1,19 +1,16 @@
 <script>
-	import Icon from '@iconify/svelte'
-	export let action
-	export let color
-	export let icon
-	export let label
-	export let options
-	export let type
+	import Icon from '@iconify/svelte';
+	export let action;
+	export let color;
+	export let icon;
+	export let label;
+	export let options;
+	export let type;
 </script>
 
-<button
-	class={`floating-action-button ${color} ${options} ${type} ripple`}
-	on:click={action}
->
+<button class={`floating-action-button ${color} ${options} ${type} ripple`} on:click={action}>
 	{#if icon}
-		<Icon icon={icon} width="24" height="24"/>
+		<Icon {icon} width="24" height="24" />
 	{/if}
 	{#if label}
 		<span class="label">{label}</span>
@@ -60,4 +57,4 @@
 	right 16px
 	position fixed
 	z-index 1
-</style>  
+</style>

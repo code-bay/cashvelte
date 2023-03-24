@@ -3,34 +3,40 @@ import { XMLParser } from 'fast-xml-parser';
 export function OFXFilter(data) {
 	let transactions = data.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN.map((prop) => {
 		return {
-			'value': prop.TRNAMT,
-			'date': OFXDate(prop.DTPOSTED),
-			'memo': prop.MEMO
-		}
-	})
+			value: prop.TRNAMT,
+			date: OFXDate(prop.DTPOSTED),
+			memo: prop.MEMO
+		};
+	});
 
 	// Código da loucura
 	//
-	var res = Object.values(transactions.reduce((acc, txn) => {
-		let {date, ...txnRest} = txn
-		acc[txn.date] = {
-			date: acc[txn.date]?.date ?? txn.date,
-			cash: {
-				in: txn.value > 0 ? (acc[txn.date]?.cash.in || 0) + txn.value : (acc[txn.date]?.cash.in || 0),
-				out: txn.value < 0 ? (acc[txn.date]?.cash.out || 0) + txn.value : (acc[txn.date]?.cash.out || 0),
-				net: (acc[txn.date]?.cash.net || 0) + txn.value,
-				txns: [...(acc[txn.date]?.cash.txns || []), txnRest]
-			}
-		}
+	var res = Object.values(
+		transactions.reduce((acc, txn) => {
+			let { date, ...txnRest } = txn;
+			acc[txn.date] = {
+				date: acc[txn.date]?.date ?? txn.date,
+				cash: {
+					in:
+						txn.value > 0 ? (acc[txn.date]?.cash.in || 0) + txn.value : acc[txn.date]?.cash.in || 0,
+					out:
+						txn.value < 0
+							? (acc[txn.date]?.cash.out || 0) + txn.value
+							: acc[txn.date]?.cash.out || 0,
+					net: (acc[txn.date]?.cash.net || 0) + txn.value,
+					txns: [...(acc[txn.date]?.cash.txns || []), txnRest]
+				}
+			};
 
-		return acc;
-	}, {}))
+			return acc;
+		}, {})
+	);
 
-	res = res.slice().sort((a, b) => a.date.localeCompare(b.date))
-	console.log(res, 'A')
+	res = res.slice().sort((a, b) => a.date.localeCompare(b.date));
+	console.log(res, 'A');
 
-	res = res.slice().sort((a, b) => b.date.localeCompare(a.date))
-	console.log(res, 'D')
+	res = res.slice().sort((a, b) => b.date.localeCompare(a.date));
+	console.log(res, 'D');
 
 	// var newRes = res.date.sort()
 	// console.log(newRes, 'sorted')
@@ -38,16 +44,15 @@ export function OFXFilter(data) {
 	// console.log(resRev, 'reverse')
 
 	// var arrdate = []
-	
+
 	// for (let [index, i] of res.entries()) {
 	// 	console.log(index)
-	// 	arrdate.push(i.date) 
+	// 	arrdate.push(i.date)
 	// }
 	// arrdate.sort()
 	// console.log(arrdate, 'antes')
 	// arrdate.reverse()
 	// console.log(arrdate, 'depois')
-
 
 	// var A = res.sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
 	// console.log(A, 'A')
@@ -55,30 +60,27 @@ export function OFXFilter(data) {
 	// var D = A.reverse((a, b) => Date.parse(a.date) - Date.parse(b.date))
 	// console.log(D, 'D')
 
-
-	return res
+	return res;
 }
 
-
 export function OFXParse(ofx) {
-	let data = `<OFX>${ofx.split('<OFX>', 2)[1]}` // gets OFX body
+	let data = `<OFX>${ofx.split('<OFX>', 2)[1]}`; // gets OFX body
 
 	try {
-		return new XMLParser().parse(data, {object: true});
+		return new XMLParser().parse(data, { object: true });
 	} catch (error) {
 		data = data
-			.replace(/<\/CODE>/g, "")
-			.replace(/<\/SEVERITY>/g, "")
+			.replace(/<\/CODE>/g, '')
+			.replace(/<\/SEVERITY>/g, '')
 			.replace(/>\s+</g, '><')
 			.replace(/\s+</g, '<')
 			.replace(/>\s+/g, '>')
-			.replace(/<([A-Z0-9_]*)+\.+([A-Z0-9_]*)>([^<]+)/g, '<\$1\$2>\$3')
-			.replace(/<(\w+?)>([^<]+)/g, '<\$1>\$2</\$1>')
+			.replace(/<([A-Z0-9_]*)+\.+([A-Z0-9_]*)>([^<]+)/g, '<$1$2>$3')
+			.replace(/<(\w+?)>([^<]+)/g, '<$1>$2</$1>')
 			.replace(/&/g, '&amp;');
-		return new XMLParser().parse(data, {object: true});
+		return new XMLParser().parse(data, { object: true });
 	}
 }
-
 
 // const res = transactions.reduce((acc, item) => {
 // 	// acc[item.date] = {test: 1, tx: [...(acc[item.date] || []), item]}
@@ -113,27 +115,27 @@ export function OFXParse(ofx) {
 // 	},
 
 export function convertTimestampToDate(timestamp) {
-	const year = parseInt(timestamp.substr(0, 4))
-	const month = parseInt(timestamp.substr(4, 2)) - 1
-	const day = parseInt(timestamp.substr(6, 2))
-	const hour = parseInt(timestamp.substr(8, 2))
-	const minute = parseInt(timestamp.substr(10, 2))
-	const second = parseInt(timestamp.substr(12, 2))
-	const offset = timestamp.substr(14)
+	const year = parseInt(timestamp.substr(0, 4));
+	const month = parseInt(timestamp.substr(4, 2)) - 1;
+	const day = parseInt(timestamp.substr(6, 2));
+	const hour = parseInt(timestamp.substr(8, 2));
+	const minute = parseInt(timestamp.substr(10, 2));
+	const second = parseInt(timestamp.substr(12, 2));
+	const offset = timestamp.substr(14);
 
-	const date = new Date(year, month, day, hour, minute, second)
+	const date = new Date(year, month, day, hour, minute, second);
 
 	if (offset) {
-		const offset_number = parseInt(offset.match(/\d+/g))
-		const offset_signal = offset.substr(1, 1)
-		const hours = date.getHours()
+		const offset_number = parseInt(offset.match(/\d+/g));
+		const offset_signal = offset.substr(1, 1);
+		const hours = date.getHours();
 
-		if (offset_signal == "-") {
-			date.setHours(hours - offset_number)
+		if (offset_signal == '-') {
+			date.setHours(hours - offset_number);
 		} else {
-			date.setHours(hours + offset_number)
+			date.setHours(hours + offset_number);
 		}
 	}
 
-	return date
+	return date;
 }

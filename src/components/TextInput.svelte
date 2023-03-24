@@ -1,14 +1,13 @@
 <script>
-	export let label
-	export let type
-	export let name
+	export let label;
+	export let type;
+	export let name;
 </script>
 
 <label class="text-field">
-	<input class="input" type={type} name={name} placeholder=" ">
+	<input class="input" {type} {name} placeholder=" " />
 	<span class="label">{label}</span>
 </label>
-
 
 <style lang="stylus">
 .text-field

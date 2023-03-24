@@ -1,9 +1,9 @@
 <script>
-  import '$styles/index.styl'
+	import '$styles/index.styl';
 </script>
 
 <div id="app">
-  <slot></slot>
+	<slot />
 </div>
 
 <style lang="stylus">

@@ -1,12 +1,9 @@
 <script>
-// import IconButton from '@components/buttons/IconButton.svelte'
+	// import IconButton from '@components/buttons/IconButton.svelte'
 
-export let navigation
-export let title
-
-
+	export let navigation;
+	export let title;
 </script>
-
 
 <header class="top-app-bar">
 	<img width="32" src="/logo.svg" />

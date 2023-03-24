@@ -1,4 +1,4 @@
-<div class="divider"></div>
+<div class="divider" />
 
 <style lang="stylus">
 .divider

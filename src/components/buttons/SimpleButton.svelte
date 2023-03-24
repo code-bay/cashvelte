@@ -1,24 +1,24 @@
 <script>
-import Icon from '@iconify/svelte'
-export let action
-export let icon
-export let label
-export let theme
-export let type = 'button'
-export let url
+	import Icon from '@iconify/svelte';
+	export let action;
+	export let icon;
+	export let label;
+	export let theme;
+	export let type = 'button';
+	export let url;
 </script>
 
 {#if url}
 	<a href={url} class={`simple-button ${theme}`}>
 		{#if icon}
-			<Icon icon={icon} width="24" height="24"/>
+			<Icon {icon} width="24" height="24" />
 		{/if}
 		{label}
 	</a>
 {:else}
-	<button class={`simple-button ${theme}`} type={type} on:click={action}>
+	<button class={`simple-button ${theme}`} {type} on:click={action}>
 		{#if icon}
-			<Icon icon={icon} width="24" height="24"/>
+			<Icon {icon} width="24" height="24" />
 		{/if}
 		{label}
 	</button>

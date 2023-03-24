@@ -1,9 +1,9 @@
 <script>
-	export let theme
+	export let theme;
 </script>
 
 <div class={`card ${theme}`}>
-	<slot/>
+	<slot />
 </div>
 
 <style lang="stylus">
