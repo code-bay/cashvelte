@@ -6,12 +6,11 @@
 	import Card from '$components/Card.svelte';
 	import FeatureCard from '$components/FeatureCard.svelte';
 	import TextInput from '$components/TextInput.svelte';
-	import TopAppBar from '$components/TopAppBar.svelte';
 	import Icon from '@iconify/svelte';
 	import Upload from '$components/Upload.svelte';
 </script>
 
-<TopAppBar title="Cashvelte" />
+
 <main>
 	<section class="hero">
 		<h1 class="title">
@@ -24,56 +23,39 @@
 			aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 		</p>
 		<div style="display: flex; gap: 12px">
-			<FloatingActionButton color="primary" type="extended" label="Open app" />
-			<FloatingActionButton color="surface" type="extended" label="Learn more" />
-			<Upload />
+			<FloatingActionButton href="/app" color="primary" size="extended" label="Open app" />
+			<FloatingActionButton href="/about"  color="surface" size="extended" label="Learn more" />
+			<!-- <Upload /> -->
 		</div>
 	</section>
 </main>
-<Divider />
-<footer>
-	<section class="copyright">
-		<Icon icon="material-symbols:copyright-outline-rounded" width="24" height="24" />
-		<span>Cashvelte {new Date().getFullYear()}</span>
-	</section>
-	<section>
-		<IconButton color="surface" icon="tabler:brand-github" />
-	</section>
-</footer>
 
 <style lang="stylus">
 main
-	background url("/bauhaus.svg") no-repeat right;
 	display flex
 	flex 1
 	flex-direction column
-	margin 0 64px
 
 .hero
-	justify-content center
 	display flex
-	flex-direction column
-	width 500px
 	flex 1
-
-footer
-	align-items center
-	color var(--on-surface)
-	display flex
-	height 80px
-	justify-content space-between
-	margin 0 64px
-
-.copyright
-	align-items center
-	display flex
-	font var(--body-medium)
-	gap 8px
+	flex-direction column
+	justify-content center
+	max-width 500px
 
 .title
 	color var(--on-surface)
-	font var(--display-large)
+	font var(--headline-large)
 	margin-bottom 12px
+
+	@media(min-width 600px)
+		font var(--display-small)
+	
+	@media(min-width 840px)
+		font var(--display-medium)
+
+	@media(min-width 1080px)
+		font var(--display-large)
 
 .description
 	color var(--on-surface-variant)
