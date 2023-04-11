@@ -6,7 +6,7 @@
 </script>
 
 <header class="top-app-bar">
-	<img width="32" src="/logo.svg" />
+	<img height="40" src="/logo.svg" />
 	<!-- 
 	{#if navigation}
 		<IconButton icon={navigation.icon} url={navigation.url}/>
@@ -25,7 +25,6 @@
 	color var(--on-surface)
 	display flex
 	height 64px
-	padding 0 64px
 	position sticky
 	top 0
 
