@@ -2,7 +2,7 @@
 
 <style lang="stylus">
 .divider
-	background #44403c
+	background var(--surface-3)
 	height 1px
 	width 100%
 </style>
