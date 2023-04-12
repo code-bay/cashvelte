@@ -1,5 +1,7 @@
 <script>
 	import FloatingActionButton from '$components/buttons/FloatingActionButton.svelte';
+	import DoughnutChart from '$components/charts/DoughnutChart.svelte';
+	import Card from '$components/Card.svelte';
 
 	let innerWidth = 0
 
@@ -9,6 +11,9 @@
 <svelte:window bind:innerWidth />
 
 <main>
+	<Card>
+		<DoughnutChart />
+	</Card>
 	{#if m3_layout === "compact"}
 		<FloatingActionButton
 			color="surface"
@@ -25,6 +30,8 @@ main
 	display flex
 	flex 1
 	flex-direction column
+	padding-left 282px
+	padding-top 100px
 
 .hero
 	display flex
