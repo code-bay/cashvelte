@@ -11,6 +11,7 @@
 	border-radius 12px
 	display flex
 	flex-direction column
+	width 300px
 	
 .elevated
 	background var(--surface)
