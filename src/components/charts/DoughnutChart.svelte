@@ -1,6 +1,7 @@
 <script>
   import { Doughnut } from 'svelte-chartjs';
-  import { data } from './data.js';
+
+  export let data
 
   import {
     Chart as ChartJS,

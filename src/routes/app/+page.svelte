@@ -12,7 +12,15 @@
 
 <main>
 	<Card>
-		<DoughnutChart />
+		<DoughnutChart data={{
+			labels: ['Ganho', 'Perdido', 'Dymas Negro'],
+			datasets: [{
+				data: [200, 500, 400],
+				backgroundColor: ['red', '#ECF983', 'blue'],
+				borderColor: ['transparent'],
+				hoverBackgroundColor: ['blue', '#FFB4AB'],
+			}],
+		}}/>
 	</Card>
 	{#if m3_layout === "compact"}
 		<FloatingActionButton
