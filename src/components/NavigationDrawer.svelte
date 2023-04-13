@@ -2,6 +2,7 @@
 	import { fade, slide } from 'svelte/transition';
 
 	import { page } from '$app/stores'
+	import { getText } from '$lib/utils/getText.js'
 	import Icon from '@iconify/svelte'
 	import FloatingActionButton from '$components/buttons/FloatingActionButton.svelte'
 
@@ -24,6 +25,7 @@
 					label="Add transaction"
 					size="extended"
 					type="file"
+					action={getText}
 				/> 
 			</div>
 		</div>
