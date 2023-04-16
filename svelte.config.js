@@ -3,6 +3,9 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 
 const config = {
 	kit: {
+		csrf: {
+			checkOrigin: false
+		},
 		adapter: adapter(),
 		alias: {
 			'$components/*': 'src/components/*',
