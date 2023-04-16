@@ -1,13 +1,5 @@
 <script>
-	import Divider from '$components/Divider.svelte';
 	import FloatingActionButton from '$components/buttons/FloatingActionButton.svelte';
-	import IconButton from '$components/buttons/IconButton.svelte';
-	import SimpleButton from '$components/buttons/SimpleButton.svelte';
-	import Card from '$components/Card.svelte';
-	import FeatureCard from '$components/FeatureCard.svelte';
-	import TextInput from '$components/TextInput.svelte';
-	import Icon from '@iconify/svelte';
-	import Upload from '$components/Upload.svelte';
 </script>
 
 
